@@ -95,7 +95,7 @@ def email_todo(request):
         subject = str(u_name)+"'s Todo List:"
         html_message = render_to_string('extra_todo_table.html', data)
         plain_message = strip_tags(html_message)
-        from_email = 'anushriarora@gmail.com'
+        from_email = 'xxxx@gmail.com'
     #to = 'to@example.com'
         #msg = EmailMultiAlternatives(subject, plain_message, from_email, [to])
         #msg.attach_alternative(html_message, "text/html")
