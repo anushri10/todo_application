@@ -1,0 +1,24 @@
+{%extends "base.html" %}
+{%block content %}
+<div class="mid">
+<table width="100%" cellpadding="5">
+<tr>
+<th width="20%">Date</th>
+<th width="40%">Job</th>
+<th width="10%">Priority</th>
+<th width="10%">Completion Status</th>
+<th width="5%">&nbsp;</th>
+</tr>
+
+{%for row in todo%}
+<tr>
+<td>{{row.created_date|date:"D d M Y"}}</td>
+<td>{{row.todo_job}}</td>
+<td>{{row.priority}}</td>
+<td>{{row.completed}}</td>
+</tr>
+{%endfor%}
+
+</table>
+</div>
+{% endblock %}

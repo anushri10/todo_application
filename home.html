@@ -1,0 +1,53 @@
+{%extends "base.html" %}
+{%block title %}{{fname}}{% endblock %}
+{%block content %}
+ 
+
+<div class="mid">
+
+<div>
+<b>{{fname}}</b>&nbsp;|&nbsp;
+<a href="/logout">Logout</a>
+</div>
+
+<h1>Todo List</h1>
+<a href="add-todo">Add Todo</a>
+<a href="email-todo">Email Todo List</a>
+
+<table width="100%" cellpadding="5">
+<tr>
+<th width="20%">Date</th>
+<th width="40%">Job</th>
+<th width="10%">Priority</th>
+<th width="10%">Completion Status</th>
+<th width="5%">&nbsp;</th>
+</tr>
+
+{%for row in todo%}
+<tr>
+<td class = "regular">{{row.created_date|date:"D d M Y"}}</td>
+<td class = "regular">{{row.todo_job}}</td>
+
+{% if row.priority == 1 %} 
+<td class= "green" > {{ row.priority }} </td>
+{% endif %}
+{% if row.priority == 2 %} 
+<td class= "orange" > {{ row.priority }} </td> 
+{% endif %}
+{% if row.priority == 3 %}
+<td class= "red" > {{ row.priority }} </td> 
+{% endif %}
+{% if row.completed == True %}
+<td class = "green_strike"> {{row.completed}} </td>
+{% endif %}
+{% if row.completed == False %}
+<td class= "red" > {{ row.completed }} </td>
+{% endif %}
+
+<td class = "regular"><a href="/edit-todo/{{row.id}}">Edit</a>&nbsp;&nbsp;<a href="/delete-todo/{{row.id}}">Delete</a></td>
+</tr>
+{%endfor%}
+
+</table>
+</div>
+{% endblock %}

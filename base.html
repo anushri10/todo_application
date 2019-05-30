@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Todo list | {% block title %}{% endblock %}</title>
+<style>
+.mid{
+display:block;
+min-height:400px;
+width:700px;
+}
+.small-div{
+width:40%;
+float:left;
+padding:10px;
+}
+input,label{
+display:block;
+margin:10px 0;
+}
+a{
+display: block;
+}
+.left{
+border-right:1px solid #000;
+}
+table tr:first-child td.regular{
+    font-weight:bold;
+    font-size:20px;
+    border-bottom:1px solid #000;
+    }
+.footer{
+    margin-top:50px;
+    border-top:1px solid #000;
+    }
+
+td.green{
+	background-color: #008000;   
+} 
+
+td.orange{
+	background-color: #FFA500;
+}
+
+td.red{
+	background-color: #FF0000;
+}
+
+td.green_strike{
+	background-color: #008000;
+	text-decoration: line-through;
+}
+
+</style>
+{% block head %}{% endblock %}
+</head>
+<body>
+{% block header %}{% endblock %}
+{% block content %}{% endblock %}
+<div class="footer">
+{% block footer %}{% endblock %}
+</div>
+</body>
+</html>

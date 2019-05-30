@@ -1,0 +1,37 @@
+{%extends "base.html" %}
+{%block title %}{{fname}}{% endblock %}
+{%block content %}
+<div class="mid">
+<div>
+<b>{{fname}}</b>&nbsp;|&nbsp;
+<a href="/logout">Logout</a>
+</div>
+
+<h1>Email below todo list</h1>
+<table width="100%" cellpadding="5">
+<tr>
+<th width="20%">Date</th>
+<th width="40%">Job</th>
+<th width="10%">Priority</th>
+<th width="10%">Completion Status</th>
+<th width="5%">&nbsp;</th>
+</tr>
+
+{%for row in todo%}
+<td>{{row.created_date|date:"D d M Y"}}</td>
+<td>{{row.todo_job}}</td>
+<td>{{row.priority}}</td>
+<td>{{row.completed}}</td>
+</tr>
+{%endfor%}
+
+</table>
+
+<form action="email-todo" method="post">
+<label>Email to receive todo-list</label>
+<input type="email" name="email" required>
+{%csrf_token%}
+</form>
+
+</div>
+{% endblock %}

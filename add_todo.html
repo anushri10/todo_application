@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{%block title %}Add | {{fname}}{% endblock %}
+{%block content%}
+<div class="mid">
+
+<div>
+<b>{{fname}}</b>&nbsp;|&nbsp;
+<a href="/logout">Logout</a>
+</div>
+
+<h1>Add Todo List</h1>
+
+<form action="add-todo" method="post">
+<label>Job</label>
+<textarea name="job" required></textarea>
+<label>Priority</label>
+<select name="level" required>
+  <option value="1">1. Low</option>
+  <option value="2">2. Medium</option>
+  <option value="3">3. High</option>
+</select>
+<label>Completion Status</label>
+<select name="status" required>
+  <option value="True">Complete</option>
+  <option value="False">Incomplete</option>
+</select>
+<input type="submit" value="Add">
+{%csrf_token%}
+</form>
+</div>
+{% endblock %}
