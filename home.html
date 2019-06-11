@@ -1,19 +1,40 @@
 {%extends "base.html" %}
 {%block title %}{{fname}}{% endblock %}
 {%block content %}
- 
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">
+  	Welcome {{fname}}
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Extra Link 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Extra Link 2</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+
 
 <div class="mid">
 
-<div>
-<b>{{fname}}</b>&nbsp;|&nbsp;
-<a href="/logout">Logout</a>
-</div>
-
+<center>
 <h1>Todo List</h1>
-<a href="add-todo">Add Todo</a>
-<a href="email-todo">Email Todo List</a>
-
+<a href="add-todo">Add Todo
+<span class="glyphicon glyphicon-plus"></span>
+</a>
+<a href="email-todo">Email Todo List
+<span class="glyphicon glyphicon-envelope"></span>
+</a>
 <table width="100%" cellpadding="5">
 <tr>
 <th width="20%">Date</th>
@@ -24,30 +45,51 @@
 </tr>
 
 {%for row in todo%}
-<tr>
+{% if row.completed == True %}
+<tr class="green_strike">
 <td class = "regular">{{row.created_date|date:"D d M Y"}}</td>
 <td class = "regular">{{row.todo_job}}</td>
-
-{% if row.priority == 1 %} 
-<td class= "green" > {{ row.priority }} </td>
-{% endif %}
-{% if row.priority == 2 %} 
-<td class= "orange" > {{ row.priority }} </td> 
-{% endif %}
-{% if row.priority == 3 %}
-<td class= "red" > {{ row.priority }} </td> 
-{% endif %}
-{% if row.completed == True %}
-<td class = "green_strike"> {{row.completed}} </td>
-{% endif %}
-{% if row.completed == False %}
-<td class= "red" > {{ row.completed }} </td>
-{% endif %}
-
+<td class = "regular">{{row.priority}}</td>
+<td class = "regular">{{row.completed}}</td>
 <td class = "regular"><a href="/edit-todo/{{row.id}}">Edit</a>&nbsp;&nbsp;<a href="/delete-todo/{{row.id}}">Delete</a></td>
 </tr>
-{%endfor%}
+{% endif %}
+
+{% if row.priority == 1 and row.completed == False %}
+<tr class="orange">
+<td class = "regular">{{row.created_date|date:"D d M Y"}}</td>
+<td class = "regular">{{row.todo_job}}</td>
+<td class = "regular">{{row.priority}}</td>
+<td class = "regular">{{row.completed}}</td>
+<td class = "regular"><a href="/edit-todo/{{row.id}}">Edit</a>&nbsp;&nbsp;<a href="/delete-todo/{{row.id}}">Delete</a></td>
+</tr>
+{% endif %}
+
+{% if row.priority == 2 and row.completed == False %}
+<tr class="yellow">
+<td class = "regular">{{row.created_date|date:"D d M Y"}}</td>
+<td class = "regular">{{row.todo_job}}</td>
+<td class = "regular">{{row.priority}}</td>
+<td class = "regular">{{row.completed}}</td>
+<td class = "regular"><a href="/edit-todo/{{row.id}}">Edit</a>&nbsp;&nbsp;<a href="/delete-todo/{{row.id}}">Delete</a></td>
+</tr>
+{% endif %}
+
+
+{% if row.priority == 3 and row.completed == False %}
+<tr class="red">
+<td class = "regular">{{row.created_date|date:"D d M Y"}}</td>
+<td class = "regular">{{row.todo_job}}</td>
+<td class = "regular">{{row.priority}}</td>
+<td class = "regular">{{row.completed}}</td>
+<td class = "regular"><a href="/edit-todo/{{row.id}}">Edit</a>&nbsp;&nbsp;<a href="/delete-todo/{{row.id}}">Delete</a></td>
+</tr>
+{% endif %}
+
+{% endfor %}
 
 </table>
 </div>
+
+</center>
 {% endblock %}

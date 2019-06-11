@@ -2,9 +2,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <title>Todo list | {% block title %}{% endblock %}</title>
 <style>
 .mid{
+position: fixed;
+top: 50%;
+left: 50%;
+  /* bring your own prefixes */
+transform: translate(-50%, -50%);
+
+}
+.centre_integrate{
 display:block;
 min-height:400px;
 width:700px;
@@ -34,21 +48,21 @@ table tr:first-child td.regular{
     border-top:1px solid #000;
     }
 
-td.green{
-	background-color: #008000;   
-} 
-
-td.orange{
-	background-color: #FFA500;
+tr.green_strike{
+    background-color: #008000;
+    text-decoration: line-through;
 }
 
-td.red{
-	background-color: #FF0000;
+tr.orange{
+    background-color: #FFA500;
 }
 
-td.green_strike{
-	background-color: #008000;
-	text-decoration: line-through;
+tr.yellow{
+    background-color: #FFFF00;
+}
+
+tr.red{
+    background-color: #FF0000;
 }
 
 </style>

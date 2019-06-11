@@ -1,13 +1,36 @@
 {%extends "base.html"%}
 {%block title %}Add | {{fname}}{% endblock %}
 {%block content%}
-<div class="mid">
-
-<div>
+<div class="left">
 <b>{{fname}}</b>&nbsp;|&nbsp;
-<a href="/logout">Logout</a>
+<a data-toggle="modal" href="#myModal">Logout</a>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Leaving?</h4>
+        </div>
+        <div class="modal-body">
+        <div class = "row">
+        <div class="col-sm-12">We hope you had a great time!</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">If you are sure to logout, click --> </div>
+          <div class="col-sm-3">
+            <a href="/logout">Logout</a>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div class="mid">
 <h1>Add Todo List</h1>
 
 <form action="add-todo" method="post">
