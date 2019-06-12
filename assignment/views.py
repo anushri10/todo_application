@@ -96,13 +96,12 @@ def email_todo(request):
         html_message = render_to_string('extra_todo_table.html', data)
         plain_message = strip_tags(html_message)
         from_email = 'xxxx@gmail.com'
-<<<<<<< HEAD
-=======
+
     #to = 'to@example.com'
         #msg = EmailMultiAlternatives(subject, plain_message, from_email, [to])
         #msg.attach_alternative(html_message, "text/html")
         #msg.send()
->>>>>>> 3e13757f9f8c193c4a4273cc1fe9dfb980ce825b
+
         mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message)
         return render(request,'email_todo.html',data)
     else:
